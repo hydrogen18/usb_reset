@@ -22,14 +22,17 @@ for entry in os.listdir(USBFS_DEVICES):
   vendor_path = os.path.join(USBFS_DEVICES, entry, 'idVendor')
   product_path = os.path.join(USBFS_DEVICES, entry, 'idProduct')
 
+  # If either file does not exist, skip it
   if not os.path.exists(vendor_path) or not os.path.exists(product_path):
     continue
 
+  # Read both the files and parse as hexadecimal
   with open(vendor_path) as fin:
     entry_vendor_id = int(fin.read(), 16)
   with open(product_path) as fin:
     entry_product_id = int(fin.read(), 16)
 
+  # If it does not match, skip it
   if entry_vendor_id != VENDOR_ID or entry_product_id != PRODUCT_ID:
     continue
 
