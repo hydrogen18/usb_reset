@@ -3,9 +3,6 @@ import string
 import time
 import sys
 
-sys.stdin.close()
-
-
 USBFS_DEVICES = os.environ.get('USBFS_DEVICES','/sys/bus/usb/devices')
 USBFS_DRIVERS = os.environ.get('USBFS_DRIVERS', '/sys/bus/usb/drivers')
 #FIND_DRIVER = os.environ['FIND_DRIVER']
