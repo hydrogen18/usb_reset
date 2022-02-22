@@ -1,0 +1,19 @@
+[Unit]
+Description=runs the network restart task
+RefuseManualStart=no
+RefuseManualStop=no
+
+[Timer]
+#Do not execute job if it missed a run due to machine being off
+Persistent=false
+#wait 5 minutes after boot
+OnBootSec=300
+#Run every 2 minutes thereafter
+OnUnitInactiveSec=120
+#File describing job to execute
+Unit=restart-network-if-down.service
+
+[Install]
+WantedBy=timers.target
+
+

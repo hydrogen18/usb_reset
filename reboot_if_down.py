@@ -28,8 +28,10 @@ else:
 if not reboot:
   sys.exit(0)
 
+subproc_env = dict(os.environ)
+subproc_env['FLIP'] = '1'
 cmd = ['python3', REBOOT_SCRIPT]
-proc = subprocess.Popen(cmd)
+proc = subprocess.Popen(cmd, env = subproc_env)
 exit_code = proc.wait()
 if exit_code != 0:
   sys.stderr.write("failed running reboot script, exited %d\n" % (exit_code,))
