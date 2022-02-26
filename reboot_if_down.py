@@ -25,6 +25,7 @@ else:
   sys.stdout.write("interface %s has no carrier file\n" % (IFACE,))
   reboot = True
 
+sys.stdout.flush()
 if not reboot:
   sys.exit(0)
 
@@ -38,7 +39,7 @@ if exit_code != 0:
   sys.exit(1)
 
 for service in ['systemd-networkd', 'NetworkManager']:
-  cmd = ['systemctl', 'restart', 'service']
+  cmd = ['systemctl', 'restart', service]
   proc = subprocess.Popen(cmd)
   exit_code = proc.wait()
   if exit_code != 0:

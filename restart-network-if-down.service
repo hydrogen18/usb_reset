@@ -3,9 +3,12 @@ Description=Restarts the network if the wifi down
 
 [Service]
 Type=simple
-Environment=IFACE=wlx001ee5d8d053 # Update with the interface name from ifconfig
-Environment=VENDOR_ID=1737 # Vendor ID of the USB stick, from lsusb
-Environment=PRODUCT_ID=0071 # Product ID of the USB stick, from lsusb
+# Update with the interface name from ifconfig
+Environment=IFACE=wlx001ee5d8d053
+# Vendor ID of the USB stick, from lsusb
+Environment=VENDOR_ID=1737
+# Product ID of the USB stick, from lsusb
+Environment=PRODUCT_ID=0071
 ExecStart=/usr/bin/python3 /opt/usb_reset/reboot_if_down.py
 
 [Install]
